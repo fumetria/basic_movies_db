@@ -1,0 +1,16 @@
+.searchBar{
+
+}
+.searchBar:focus{
+    outline:transparent;
+}
+
+.searchBtn{
+    flex-shrink: none;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
+}

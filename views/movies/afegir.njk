@@ -1,0 +1,43 @@
+{% extends "../base.njk" %}
+
+{% block titol %}Pel·lícules | Inserir{% endblock %}
+
+{% block contingut %}
+
+ <h1 text-center>Afegir pel·lícula</h1>
+
+ <form action="/movies/addmovie" method="post">
+    <div class="form-group mb-3">
+        <label>Títol:</label>   
+        <input type="text" class="form-control" name="title" placeholder="Títol de la pel·lícula...">
+    </div>
+    <div class="form-group mb-3">
+        <label>Any:</label>
+        <input type="number" class="form-control" name="year"
+                placeholder="Any de publicació...">
+    </div>
+    <div class="form-group mb-3">
+        <label>Director:</label>
+        <input type="text" class="form-control" name="director"
+                placeholder="Nom del director...">
+    </div>
+    <div class="form-group mb-3">
+        <label>Duració:</label>
+        <input type="number" class="form-control" name="duration"
+                placeholder="Duració en minuts...">
+    </div>
+    <div class="form-group mb-3">
+        <label>Gènere:</label>
+        <select class="form-control" name="genre" multiple>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Crime">Crime</option>
+            <option value="Drama">Drama</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Enviar
+    </button>
+ </form>
+
+{% endblock %}

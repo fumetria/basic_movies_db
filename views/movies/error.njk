@@ -1,0 +1,13 @@
+{% extends "../base.njk" %}
+
+{% block titol %}Error{% endblock %}
+
+{% block contingut %}
+    <div class="alert alert-danger">
+        {% if error %}
+            {{ error }}
+        {% else %}
+            Error en l'aplicació
+        {% endif %}
+    </div>
+{% endblock %}

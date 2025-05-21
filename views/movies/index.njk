@@ -1,0 +1,28 @@
+{% extends "../base.njk" %}
+
+{% block titol %}Projecte Movies MVC{% endblock %}
+
+{% block contingut %}
+    <h1>Benvingut a Pel·lícules <span class="text-danger">{{user}}</span></h1>
+
+    <h3> DWES de CFGS DAW </h3>
+    <h4> Curs 2024-2025 </h4>
+
+        <div class="row">
+            <div class="gridContainer gap-3 mb-4">
+            {% for movie in movies %}
+            {# col-6 col-md-4 col-lg-3 mb-4 mx-1 #}
+            
+                <div class="card">
+                    <img src="{{ movie.poster }}" class="card-img-top" alt="cartel pel·lícula {{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text">{{ movie.year }}</p>
+                        <a href="#" class="btn btn-primary">{{ movie.director }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+              </div>
+        </div>
+
+{% endblock %}

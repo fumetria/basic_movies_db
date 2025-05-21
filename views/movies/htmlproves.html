@@ -1,0 +1,80 @@
+<thead>
+    <tr>
+
+        <th>Títol</th>
+        <th>Favorit</th>
+        <th>Puntuació</th>
+        <th>Accions</th>
+    </tr>
+</thead>
+<tr>
+
+    <td><a class="btn list-group-item-action" href="#"> {{ movie.title }}</a></td>
+    <td>
+        {% if movie.fav %}
+        <form action="/movies/update/fav/:_id" method="post">
+            <input type="text" name="fav" value="{{ movie.fav }}">
+            <button><i class="bi bi-heart-fill" style="color: red;"></i></button>
+        </form>
+        {% else %}
+        <form action="/movies/update/fav/:_id" method="post">
+            <input type="text" name="fav" value="{{ movie.fav}}">
+            <button><i class="bi bi-heart" style="color: black;"></i></button>
+        </form>
+        {% endif %}
+    </td>
+    <td></td>
+    <td>
+        <!-- Modal -->
+        <div class="modal fade" id="modal_{{ movie._id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Detall pel·lícula</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-left">
+                        <h2 class="text-center">{{ movie.title }}</h2>
+                        <p><strong>Any:</strong> {{ movie.year }}</p>
+                        <p><strong>Director:</strong> {{ movie.director }}</p>
+                        <p><strong>Duració:</strong> {{ movie.duration }} min.</p>
+                        <p><strong>Génere:</strong> {{ movie.genre }}</p>
+                        <p><strong>Calificació:</strong> {{ movie.rate }}</p>
+                        <p><strong>Favorit:</strong> {{ movie.fav }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="/movies/edit/{{movie._id}}" method="get">
+            <button class="btn btn-primary"><i class="bi bi-pencil"></i></button>
+        </form>
+        <form action="/movies/delete/{{movie._id}}" method="post">
+            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+        </form>
+        </div>
+    </td>
+</tr>
+<script>
+    document.getElementById('favorit')
+</script>
+
+
+<div>
+    <form action="/movies/list" method="get">
+        <input type="text" id="rate" name="rate" value="{{ rateFilter }}" hidden>
+        <button class="btn btn-outline-none">
+            <i class="bi bi-{{ rateIcon }}"></i>
+        </button>
+    </form>
+</div>
+
+<div>
+    <form action="/movies/list" method="get">
+        <input type="text" name="qtitle" id="qtitle" placeholder="Introduix títol">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+
+{% block menu %}
+
+<nav class="d-flex flex-wrap bg-dark bg-align-items-center justify-content-between justify-content-md-between py-3 mb-4 border-bottom">
+
+        <h1 class="text-light ms-2 align-items-center "><a href="/movies" class="text-decoration-none text-light">Movies MVC</a></h1>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 gap-3 align-items-center me-2 ">
+            <li><a href="/movies/list" class="text-decoration-none text-light">Llistat</a></li>
+            <li><a  href="/movies/addmovie" class="text-decoration-none text-light">Afegir Pel·lícula</a></li>
+            {% if user %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/users/logout">Logout {{user}} </a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/users/register">Registrar-se</a>
+            </li>
+            {% endif %}
+        </ul>
+
+</nav>
+
+{% endblock %}
